@@ -5,6 +5,8 @@ import {
 	BlazeLayout
 } from 'meteor/kadira:blaze-layout';
 
+import 'bootstrap';
+
 //Layouts
 import '../../ui/layouts/header/header.js';
 import '../../ui/layouts/footer/footer.js';

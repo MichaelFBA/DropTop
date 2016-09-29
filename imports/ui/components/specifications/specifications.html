@@ -5,7 +5,17 @@
             <div class="row">
                 <div class="col-xs-12">
                     <form class="new-spec">
-                        <div class="form-group">
+                        <div class="input-group form-group">
+                            <div class="input-group-btn">
+                                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    ⤓
+                                </button>
+                                <div class="dropdown-menu">
+                                    {{#each uniqueSpecifications}}
+                                    <a class="dropdown-item" href="#">{{type}}</a>
+                                    {{/each}}
+                                </div>
+                            </div>
                             <input type="text" name="type" class="form-control" placeholder="Add type... ie [cpu] ">
                         </div>
                         <div class="form-group">

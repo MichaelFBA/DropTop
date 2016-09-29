@@ -1,10 +1,8 @@
 {
   "servers": [
     {
-      "host": "droptop",
-      "username": "root",
-      "password": "password",
-      "env": {}
+      "host": "droptop.odd13.com",
+      "username": "michael"
     }
   ],
 

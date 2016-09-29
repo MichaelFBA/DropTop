@@ -1,5 +1,6 @@
 import { Template } from 'meteor/templating';
 import { $ } from 'meteor/jquery';
+import Sugar from 'sugar';
 import { Specifications, insertSpec, deleteSpec } from '/imports/api/specifications/specifications.js';
 import './specifications.html';
 
@@ -14,6 +15,12 @@ Template.specifications.helpers({
     specifications: function(){
         return Specifications.find({});
     },
+    uniqueSpecifications: function(){
+        var specs = Specifications.find().fetch();
+        return Sugar.Array.unique(specs, function(spec){
+            return spec.type;
+        });
+    }
 });
 
 Template.specifications.events({
