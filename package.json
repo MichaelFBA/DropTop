@@ -1,0 +1,12 @@
+{
+  "name": "droptop",
+  "private": true,
+  "scripts": {
+    "start": "meteor run"
+  },
+  "dependencies": {
+    "bcrypt": "^0.8.7",
+    "bootstrap": "^4.0.0-alpha.4",
+    "moment": "^2.14.1"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "servers": [
+    {
+      "host": "droptop",
+      "username": "root",
+      "password": "password",
+      "env": {}
+    }
+  ],
+
+  "setupMongo": true,
+
+  "appName": "meteor",
+
+  "app": "~/Sites/droptop",
+
+  "app": "/Users/michael/Sites/droptop",
+
+  "env": {
+    "PORT": 80,
+    "ROOT_URL": "http://droptop.odd13.com"
+  },
+
+  "deployCheckWaitTime": 15,
+
+  "enableUploadProgressBar": true
+}

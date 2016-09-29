@@ -1,0 +1,27 @@
+<template name="tags">
+    <div class="card">
+        <div class="card-block">
+            <h4 class="card-title">Tags</h4>
+            <div class="row">
+                <div class="col-xs-12">
+                    <form class="new-tag">
+                        <div class="input-group">
+                            <input type="text" name="tag" class="form-control" placeholder="Add Tag...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-secondary" type="submit">Add!</button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <ul class="list-group list-group-flush">
+            {{#each tags}}
+                <li class="list-group-item">
+                    {{tag}}
+                    <button type="button" data-id="{{_id}}" class="close pull-xs-right remove" aria-label="Close">&times;</button>
+                </li>
+            {{/each}}
+        </ul>
+    </div>
+</template>
