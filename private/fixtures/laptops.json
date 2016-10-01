@@ -1,0 +1,290 @@
+[
+    {
+        "cpu": "Celeron-N2840",
+        "panelsize": 11.6,
+        "ram": "2GB",
+        "hdd": "32GB",
+        "graphic": "UMA",
+        "os": "Windows 10 Home",
+        "wlan": "ac 1x1+BT 4.0"
+    },
+    {
+        "cpu": "Celeron-N2840",
+        "panelsize": 11.6,
+        "ram": "2GB",
+        "hdd": "32GB",
+        "graphic": "UMA",
+        "os": "Windows 10 Home",
+        "wlan": "ac 1x1+BT 4.0"
+    },
+    {
+        "cpu": "Celeron-N3060",
+        "panelsize": 11.6,
+        "ram": "4GB (DDR3)",
+        "hdd": "32GB eMMC",
+        "graphic": "UMA",
+        "os": "Windows 10 Home",
+        "wlan": "ac 2x2 +BT 4.2"
+    },
+    {
+        "cpu": "E2-7110",
+        "panelsize": 14,
+        "ram": "4GB (DDR 3)",
+        "hdd": "500GB",
+        "graphic": "UMA",
+        "os": "Windows 10 Home",
+        "wlan": "ac 1x1 +BT 4.2"
+    },
+    {
+        "cpu": "A6-7310",
+        "panelsize": 14,
+        "ram": "4GB (DDR 3)",
+        "hdd": "500GB",
+        "graphic": "UMA",
+        "os": "Windows 10 Home",
+        "wlan": "ac 1x1 +BT 4.2"
+    },
+    {
+        "cpu": "A6-7310",
+        "panelsize": 15.6,
+        "ram": "4GB (DDR 3)",
+        "hdd": "500GB",
+        "graphic": "UMA",
+        "os": "Windows 10 Home",
+        "wlan": "ac 1x1 +BT 4.2"
+    },
+    {
+        "cpu": "A6-7310",
+        "panelsize": 15.6,
+        "ram": "8GB (DDR 3)",
+        "hdd": "1TB",
+        "graphic": "UMA",
+        "os": "Windows 10 Home",
+        "wlan": "ac 1x1 +BT 4.2"
+    },
+    {
+        "cpu": "Pentium-N3710",
+        "panelsize": 15.6,
+        "ram": "8GB (DDR 3)",
+        "hdd": "1TB",
+        "graphic": "UMA",
+        "os": "Windows 10 Home",
+        "wlan": "ac 1x1 +BT 4.2"
+    },
+    {
+        "cpu": "A6-7310",
+        "panelsize": 15.6,
+        "ram": "16GB (DDR3)",
+        "hdd": "256GB SSD",
+        "graphic": "UMA",
+        "os": "Windows 10 Home",
+        "wlan": "ac 1x1 +BT 4.2"
+    },
+    {
+        "cpu": "Pentium-N3710",
+        "panelsize": 15.6,
+        "ram": "8GB (DDR 3)",
+        "hdd": "128GB SSD",
+        "graphic": "UMA",
+        "os": "Windows 10 Home",
+        "wlan": "ac 1x1 +BT 4.2"
+    },
+    {
+        "cpu": "i5-6200U",
+        "panelsize": 15.6,
+        "ram": "8GB (DDR4)",
+        "hdd": "1TB",
+        "graphic": "2GB R5",
+        "os": "Windows 10 Home",
+        "wlan": "ac 1x1 +BT 4.2"
+    },
+    {
+        "cpu": "A8-7410",
+        "panelsize": 15.6,
+        "ram": "8GB (DDR3)",
+        "hdd": "2TB",
+        "graphic": "2GB R5",
+        "os": "Windows 10 Home",
+        "wlan": "ac 1x1 +BT 4.2"
+    },
+    {
+        "cpu": "A8-7410",
+        "panelsize": 17.3,
+        "ram": "8GB (DDR3)",
+        "hdd": "1TB",
+        "graphic": "2GB R7",
+        "os": "Windows 10 Home",
+        "wlan": "ac 1x1 +BT 4.2"
+    },
+    {
+        "cpu": "i7-6500U",
+        "panelsize": 15.6,
+        "ram": "8GB (DDR4)",
+        "hdd": "1TB",
+        "graphic": "2GB R7",
+        "os": "Windows 10 Home",
+        "wlan": "ac 1x1 +BT 4.2"
+    },
+    {
+        "cpu": "i3-6100U",
+        "panelsize": 13.3,
+        "ram": "8GB (DDR4)",
+        "hdd": "128GB SSD",
+        "graphic": "UMA",
+        "os": "Windows 10 Home",
+        "wlan": "ac 1x1 +BT 4.2"
+    },
+    {
+        "cpu": "i5-6200U",
+        "panelsize": 15.6,
+        "ram": "8GB (DDR4)",
+        "hdd": "256GB SSD",
+        "graphic": "2GB 940MX",
+        "os": "Windows 10 Home",
+        "wlan": "ac 1x1 +BT 4.2"
+    },
+    {
+        "cpu": "i5-6200U",
+        "panelsize": 13.3,
+        "ram": "8GB (DDR4)",
+        "hdd": "128GB SSD",
+        "graphic": "UMA",
+        "os": "Windows 10 Home",
+        "wlan": "ac 1x1 +BT 4.2"
+    },
+    {
+        "cpu": "A10-9600P",
+        "panelsize": 15.6,
+        "ram": "8GB (DDR4)",
+        "hdd": "256GB SSD",
+        "graphic": "2GB R7",
+        "os": "Windows 10 Home",
+        "wlan": "ac 1x1 +BT 4.2"
+    },
+    {
+        "cpu": "i7-6500U",
+        "panelsize": 15.6,
+        "ram": "8GB (DDR4)",
+        "hdd": "2TB",
+        "graphic": "4GB R7",
+        "os": "Windows 10 Home",
+        "wlan": "ac 1x1 +BT 4.2"
+    },
+    {
+        "cpu": "i7-6500U",
+        "panelsize": 14,
+        "ram": "16GB (DDR4)",
+        "hdd": "256GB SSD",
+        "graphic": "4GB 940MX",
+        "os": "Windows 10 Home",
+        "wlan": "ac 1x1 +BT 4.2"
+    },
+    {
+        "cpu": "i7-7500U",
+        "panelsize": 15.6,
+        "ram": "16GB (DDR4)",
+        "hdd": "2TB",
+        "graphic": "4GB R7",
+        "os": "Windows 10 Home",
+        "wlan": "ac 1x1 +BT 4.2"
+    },
+    {
+        "cpu": "i5-6200U",
+        "panelsize": 13.3,
+        "ram": "8GB",
+        "hdd": "SSD 256GB",
+        "graphic": "UMA",
+        "os": "Windows 10 Home",
+        "wlan": "ac 2x2 +BT 4.0"
+    },
+    {
+        "cpu": "A10-9600P",
+        "panelsize": 15.6,
+        "ram": "16GB (DDR4)",
+        "hdd": "256GB SSD",
+        "graphic": "4GB R7",
+        "os": "Windows 10 Home",
+        "wlan": "ac 1x1 +BT 4.2"
+    },
+    {
+        "cpu": "i7-6560U",
+        "panelsize": 15.6,
+        "ram": "8GB (DDR4)",
+        "hdd": "1TB",
+        "graphic": "Iris",
+        "os": "Windows 10 Home",
+        "wlan": "ac 2x2 +BT 4.2"
+    },
+    {
+        "cpu": "i5-6200U",
+        "panelsize": 13.3,
+        "ram": "8GB",
+        "hdd": "SSD 256GB TLC",
+        "graphic": "UMA",
+        "os": "Windows 10 Home",
+        "wlan": "ac 2x2 nP +BT 4.0"
+    },
+    {
+        "cpu": "i7-6560U",
+        "panelsize": 15.6,
+        "ram": "16GB (DDR4)",
+        "hdd": "512GB SSD",
+        "graphic": "Iris",
+        "os": "Windows 10 Home",
+        "wlan": "ac 2x2 +BT 4.2"
+    },
+    {
+        "cpu": "i7-6500U",
+        "panelsize": 13.3,
+        "ram": "8GB",
+        "hdd": "SSD 512GB TLC",
+        "graphic": "UMA",
+        "os": "Windows 10 Home",
+        "wlan": "ac 2x2 nP +BT 4.0"
+    },
+    {
+        "cpu": "i7-6500U",
+        "panelsize": 17.3,
+        "ram": "16GB (DDR4)",
+        "hdd": "2TB",
+        "graphic": "4GB R7",
+        "os": "Windows 10 Home",
+        "wlan": "ac 1x1 +BT 4.2"
+    },
+    {
+        "cpu": "i5-7200U",
+        "panelsize": 13.3,
+        "ram": "8GB (DDR4)",
+        "hdd": "256GB SSD",
+        "graphic": "UMA",
+        "os": "Windows 10 Home",
+        "wlan": "ac 2x2 +BT 4.2"
+    },
+    {
+        "cpu": "i7-7500U",
+        "panelsize": 13.3,
+        "ram": "16GB (DDR4)",
+        "hdd": "512GB SSD",
+        "graphic": "UMA",
+        "os": "Windows 10 Home",
+        "wlan": "ac 2x2 +BT 4.2"
+    },
+    {
+        "cpu": "i5-7200U",
+        "panelsize": 13.3,
+        "ram": "8GB (DDR4)",
+        "hdd": "256GB SSD",
+        "graphic": "UMA",
+        "os": "Windows 10 Home",
+        "wlan": "ac 1x1 +BT 4.2"
+    },
+    {
+        "cpu": "i7-7500U",
+        "panelsize": 13.3,
+        "ram": "8GB (DDR4)",
+        "hdd": "512GB SSD",
+        "graphic": "UMA",
+        "os": "Windows 10 Home",
+        "wlan": "ac 2x2 +BT 4.2"
+    }
+]

@@ -1,27 +1,33 @@
 <template name="tags">
-    <div class="card">
-        <div class="card-block">
-            <h4 class="card-title">Tags</h4>
-            <div class="row">
-                <div class="col-xs-12">
-                    <form class="new-tag">
-                        <div class="input-group">
-                            <input type="text" name="tag" class="form-control" placeholder="Add Tag...">
-                            <span class="input-group-btn">
-                                <button class="btn btn-secondary" type="submit">Add!</button>
-                            </span>
-                        </div>
-                    </form>
-                </div>
-            </div>
+    <h2>Tags</h2>
+    <form class="form-inline new-tag">
+        <div class="input-group">
+            <input type="text" name="tag" class="form-control" placeholder="Add Tag...">
+            <span class="input-group-btn">
+                <button class="btn btn-secondary" type="submit">Add!</button>
+            </span>
         </div>
-        <ul class="list-group list-group-flush">
-            {{#each tags}}
-                <li class="list-group-item">
-                    {{tag}}
-                    <button type="button" data-id="{{_id}}" class="close pull-xs-right remove" aria-label="Close">&times;</button>
-                </li>
-            {{/each}}
-        </ul>
-    </div>
+    </form>
+    <br/>
+    <form class="">
+        <div class="form-group">
+            <label class="small" for="">Tags</label>
+            <select class="form-control form-control-sm">
+                {{#each tags}}
+                <option>{{tag}}</option>
+                {{/each}}
+            </select>
+        </div>
+        <div class="form-group">
+            <ul class="list-unstyled" style="max-height:200px; overflow:scroll">
+                {{#each tags}}
+                    <li>
+                        {{tag}}
+                        <button type="button" data-id="{{_id}}" class="close pull-xs-right remove" aria-label="Close">&times;</button>
+                    </li>
+                {{/each}}
+            </ul>
+        </div>
+    </form>
+    <hr/>
 </template>

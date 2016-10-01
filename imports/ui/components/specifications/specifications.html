@@ -1,40 +1,40 @@
 <template name="specifications">
-    <div class="card">
-        <div class="card-block">
-            <h4 class="card-title">Specifications</h4>
-            <div class="row">
-                <div class="col-xs-12">
-                    <form class="new-spec">
-                        <div class="input-group form-group">
-                            <div class="input-group-btn">
-                                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    ⤓
-                                </button>
-                                <div class="dropdown-menu">
-                                    {{#each uniqueSpecifications}}
-                                    <a class="dropdown-item" href="#">{{type}}</a>
-                                    {{/each}}
-                                </div>
-                            </div>
-                            <input type="text" name="type" class="form-control" placeholder="Add type... ie [cpu] ">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" name="value" class="form-control" placeholder="Add value...">
-                        </div>
-                        <button class="btn btn-block btn-secondary" type="submit">Add!</button>
-                    </form>
-                </div>
-            </div>
+    <h2>Specifications</h2>
+    <form class="form-inline new-spec">
+        <div class="form-group">
+            <input type="text" name="type" class="form-control" placeholder="Add type... ie [cpu] ">
         </div>
-        <ul class="list-group list-group-flush">
-            {{#each specifications}}
-                <li class="list-group-item">
-                    <strong>Type:</strong> {{type}}
-                    <button type="button" data-id="{{_id}}" class="close pull-xs-right remove" aria-label="Close">&times;</button>
-                    <br/>
-                    <strong>Value:</strong> {{value}}
-                </li>
-            {{/each}}
-        </ul>
-    </div>
+        <div class="form-group">
+            <input type="text" name="value" class="form-control" placeholder="Add value...">
+        </div>
+        <button type="submit" class="btn btn-secondary">Add!</button>
+    </form>
+    <br/>
+    <form class="form-inline">
+        {{#each uniqueSpecifications}}
+            <div class="form-group">
+                <label class="small" for="">{{type}}</label><br/>
+                <select id="" class="form-control form-control-sm">
+                    {{#each uniqueSpecificationsOptions type}}
+                    <option>{{value}}</option>
+                    {{/each}}
+                </select>
+            </div>
+        {{/each}}
+    </form>
+    <form class="">
+        <div class="form-group">
+            <ul class="list-unstyled" style="max-height:200px; overflow:scroll">
+                {{#each specifications}}
+                    <li>
+                        <strong>Type:</strong> {{type}}
+                        <button type="button" data-id="{{_id}}" class="close pull-xs-right remove" aria-label="Close">&times;</button>
+                        <br/>
+                        <strong>Value:</strong> {{value}}
+                    </li>
+                {{/each}}
+            </ul>
+        </div>
+    </form>
+    <hr/>
 </template>

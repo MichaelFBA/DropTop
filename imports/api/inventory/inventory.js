@@ -3,9 +3,9 @@ import { Random } from 'meteor/random';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 import { ValidatedMethod } from 'meteor/mdg:validated-method';
 
-export const Specifications = new Mongo.Collection('Specifications');
+export const Inventory = new Mongo.Collection('Inventory');
 
-Specifications.schema = new SimpleSchema({
+Inventory.schema = new SimpleSchema({
 	_id: {
     	type: String,
     	regEx: SimpleSchema.RegEx.Id,
@@ -21,34 +21,34 @@ Specifications.schema = new SimpleSchema({
 	},
 });
 
-Specifications.attachSchema(Specifications.schema);
+Inventory.attachSchema(Inventory.schema);
 
-Specifications.publicFields = { type: 1, value: 1 };
+Inventory.publicFields = { type: 1, value: 1 };
 
 export const insertSpec = new ValidatedMethod({
-	name: 'specifications.insert',
-	validate: Specifications.schema.validator(),
+	name: 'inventory.insert',
+	validate: Inventory.schema.validator(),
 	run(fields) {
 		// if (!this.userId) {
 		//   throw new Meteor.Error('unauthorized', 'You must be logged in to add a new movie!')
 		// }
-		Specifications.insert(fields);
+		Inventory.insert(fields);
 	}
 });
 
 export const deleteSpec = new ValidatedMethod({
-	name: 'specifications.delete',
+	name: 'inventory.delete',
 	validate: function(){},
 	run(fields) {
-		Specifications.remove(fields);
+		Inventory.remove(fields);
 	}
 });
 
 export const updateSpec = new ValidatedMethod({
-	name: 'specifications.update',
-	validate: Specifications.schema.validator(),
+	name: 'inventory.update',
+	validate: Inventory.schema.validator(),
 	run(fields) {
-		return Specifications.upsert(
+		return Inventory.upsert(
 			fields,
 			{$set: fields }
 		);
@@ -57,7 +57,7 @@ export const updateSpec = new ValidatedMethod({
 
 //Publications
 if (Meteor.isServer) {
-    Meteor.publish('specifications.getAll', function() {
-      return Specifications.find({});
+    Meteor.publish('inventory.getAll', function() {
+      return Inventory.find({});
     });
 }

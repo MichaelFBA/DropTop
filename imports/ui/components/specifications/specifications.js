@@ -20,6 +20,9 @@ Template.specifications.helpers({
         return Sugar.Array.unique(specs, function(spec){
             return spec.type;
         });
+    },
+    uniqueSpecificationsOptions: function(type){
+        return Specifications.find({'type': type});
     }
 });
 
