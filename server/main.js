@@ -5,7 +5,7 @@ import { updateSpec } from '/imports/api/specifications/specifications.js';
 //Api
 import '/imports/api/tags/tags.js';
 import '/imports/api/specifications/specifications.js';
-import '/imports/api/inventory/inventory.js';
+// import '/imports/api/inventory/inventory.js';
 
 // code to run on server at startup
 Meteor.startup(() => {

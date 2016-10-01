@@ -1,0 +1,66 @@
+<template name="inventory">
+    <h2>Inventory</h2>
+    <small>If there are any specs or tags missing for this item, just add below</small>
+    <form class="form-inline new-spec">
+        <div class="form-group">
+            <input type="text" name="sku" class="form-control" placeholder="SKU">
+        </div>
+        <div class="form-group">
+            <input type="text" name="description" class="form-control" placeholder="Description">
+        </div>
+        <div class="form-group">
+            <input type="number" name="rrp" class="form-control" placeholder="RRP">
+        </div>
+        <div class="form-group">
+            <input type="number" name="wholesalePrice" class="form-control" placeholder="Wholesale price">
+        </div>
+        <div class="form-group">
+            <input type="text" name="brand" class="form-control" placeholder="Brand">
+        </div>
+        <br/>
+        <br/>
+        <label for="">Choose Specifications to add to inventory item</label><br/>
+        {{#each uniqueSpecifications}}
+            <div class="form-group">
+                <label class="small" for="">{{type}}</label><br/>
+                <select id="" class="form-control form-control-sm">
+                    {{#each uniqueSpecificationsOptions type}}
+                    <option>{{value}}</option>
+                    {{/each}}
+                </select>
+            </div>
+        {{/each}}
+        <br/>
+        <br/>
+        <label for="">Add Tags to this item</label><br/>
+        <div class="form-group">
+            <label class="small">Tags attached to inventory item</label><br/>
+            {{#each attachedTags}}
+                <button type="button" data-id="{{this}}" class="btn btn-success btn-sm remove-tag" aria-label="Close">{{getTagName this}} &times;</button>
+            {{/each}}
+            <br/>
+            <label class="small">Available Tags</label><br/>
+            {{#each tags}}
+                <button type="button" data-id="{{_id}}" class="btn btn-secondary btn-sm add-tag" aria-label="Close">{{tag}}</button>
+            {{/each}}
+        </div>
+        <br/>
+        <br/>
+        <button type="submit" class="btn btn-secondary">Add Inventory Item</button>
+    </form>
+
+    <br/>
+    <form class="">
+        <div class="form-group">
+            <ul class="list-unstyled" style="max-height:200px; overflow:scroll">
+                {{#each inventory}}
+                    <li>
+                        {{tag}}
+                        <button type="button" data-id="{{_id}}" class="close pull-xs-right remove" aria-label="Close">&times;</button>
+                    </li>
+                {{/each}}
+            </ul>
+        </div>
+    </form>
+    <hr/>
+</template>

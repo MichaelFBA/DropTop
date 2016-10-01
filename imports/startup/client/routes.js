@@ -16,8 +16,10 @@ import '../../ui/pages/home/home.js';
 import '../../ui/pages/admin/admin.js';
 
 //Components
+import '../../ui/components/helpers/helpers.js';
 import '../../ui/components/tags/tags.js';
 import '../../ui/components/specifications/specifications.js';
+import '../../ui/components/inventory/inventory.js';
 
 BlazeLayout.setRoot('body');
 

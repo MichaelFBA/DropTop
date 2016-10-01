@@ -11,21 +11,57 @@ Inventory.schema = new SimpleSchema({
     	regEx: SimpleSchema.RegEx.Id,
 		optional: true
   	},
-	type: {
+	createdAt: {
+        type: Date,
+        autoValue: function() {
+            return new Date();
+        },
+        denyUpdate: true
+    },
+	sku: {
+		type: String,
+		max: 50,
+	},
+	description: {
+		type: String,
+		max: 500,
+	},
+	rrp: {
+		type: Number,
+		max: 30,
+	},
+	wholesalePrice: {
+		type: Number,
+		max: 30,
+	},
+	brand: {
 		type: String,
 		max: 200,
 	},
-	value: {
-		type: String,
-		max: 200,
+	specifications: {
+		type: [Number],
+		optional: true
+	},
+	tags: {
+		type: [Number],
+		optional: true
 	},
 });
 
 Inventory.attachSchema(Inventory.schema);
 
-Inventory.publicFields = { type: 1, value: 1 };
+Inventory.publicFields = {
+	sku: 1,
+	description: 1,
+	rrp: 1,
+	wholesalePrice: 1,
+	purchaseDate: 1,
+	brand: 1,
+	specifications: 1,
+	tags: 1
+};
 
-export const insertSpec = new ValidatedMethod({
+export const insertInventory = new ValidatedMethod({
 	name: 'inventory.insert',
 	validate: Inventory.schema.validator(),
 	run(fields) {
@@ -36,7 +72,7 @@ export const insertSpec = new ValidatedMethod({
 	}
 });
 
-export const deleteSpec = new ValidatedMethod({
+export const deleteInventory = new ValidatedMethod({
 	name: 'inventory.delete',
 	validate: function(){},
 	run(fields) {
@@ -44,7 +80,7 @@ export const deleteSpec = new ValidatedMethod({
 	}
 });
 
-export const updateSpec = new ValidatedMethod({
+export const updateInventory = new ValidatedMethod({
 	name: 'inventory.update',
 	validate: Inventory.schema.validator(),
 	run(fields) {

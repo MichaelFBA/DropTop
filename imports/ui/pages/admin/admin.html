@@ -2,6 +2,9 @@
     <section class="container">
         <div class="row">
             <div class="col-xs-12">
+                {{> inventory}}
+            </div>
+            <div class="col-xs-12">
                 {{> tags}}
             </div>
             <div class="col-xs-12">
@@ -9,12 +12,4 @@
             </div>
         </div>
     </section>
-    {{#if Template.subscriptionsReady}}
-      {{#with adminData}}
-        <h3>createdAt: {{createdAt}}</h3>
-      {{/with}}
-    {{else}}
-        <p>Loading...</p>
-    {{/if}}
-
 </template>
