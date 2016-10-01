@@ -60,14 +60,14 @@
                         <b>rrp:</b> {{rrp}}<br/>
                         <b>wholesalePrice:</b> {{wholesalePrice}}<br/>
                         <b>brand:</b> {{brand}}<br/>
-                        <b>specifictions:</b>
-                        {{#each specifictions}}
+                        <b>specifications:</b>
+                        {{#each this.specifictions}}
                             {{getSpecificationsName this}},
                         {{/each}}
                         <br/>
                         <b>tags:</b>
-                        {{#each tags}}
-                             {{getTagName this}} ,
+                        {{#each this.tags}}
+                             {{getTagName this}},
                         {{/each}}
                         <br/>
                         <button type="button" data-id="{{_id}}" class="close pull-xs-right remove" aria-label="Close">&times;</button>
