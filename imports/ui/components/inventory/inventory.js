@@ -4,6 +4,7 @@ import { $ } from 'meteor/jquery';
 import Sugar from 'sugar';
 import { Specifications } from '/imports/api/specifications/specifications.js';
 import { Tags } from '/imports/api/tags/tags.js';
+import { Inventory, insertInventory } from '/imports/api/inventory/inventory.js';
 
 import './inventory.html';
 
@@ -17,6 +18,9 @@ Template.inventory.onCreated(function() {
 });
 
 Template.inventory.helpers({
+    inventory: function(){
+        return Inventory.find({});
+    },
     tags: function(){
         return Tags.find({});
     },
@@ -38,15 +42,26 @@ Template.inventory.helpers({
 });
 
 Template.inventory.events({
-    "submit .new-spec": function(event, template){
+    "submit .new-inventory": function(event, template){
         event.preventDefault();
 
+        //Input
         const data = {
-            type: event.target.type.value,
-            value: event.target.value.value
+            sku: event.target.sku.value,
+            description: event.target.description.value,
+            rrp: +event.target.rrp.value,
+            wholesalePrice: +event.target.wholesalePrice.value,
+            brand: event.target.brand.value,
+            sku: event.target.sku.value,
+            specifications: [],
+            tags: Session.get("attachedTags")
         };
+        //Select
+        $('.new-inventory select').each(function(){
+            data.specifications.push($(this).val());
+        })
 
-        insertSpec.call(data, function(error, result){
+        insertInventory.call(data, function(error, result){
             if(error){
                 console.log("error", error);
             }
@@ -54,7 +69,7 @@ Template.inventory.events({
                 console.log("result", result);
             }
         });
-        event.target.type.value = event.target.value.value = '';
+
     },
     "click .add-tag": function(event, template){
 

@@ -1,7 +1,7 @@
 <template name="inventory">
     <h2>Inventory</h2>
     <small>If there are any specs or tags missing for this item, just add below</small>
-    <form class="form-inline new-spec">
+    <form class="form-inline new-inventory">
         <div class="form-group">
             <input type="text" name="sku" class="form-control" placeholder="SKU">
         </div>
@@ -23,9 +23,9 @@
         {{#each uniqueSpecifications}}
             <div class="form-group">
                 <label class="small" for="">{{type}}</label><br/>
-                <select id="" class="form-control form-control-sm">
+                <select name="{{type}}" class="form-control form-control-sm">
                     {{#each uniqueSpecificationsOptions type}}
-                    <option>{{value}}</option>
+                    <option value="{{_id}}">{{value}}</option>
                     {{/each}}
                 </select>
             </div>
@@ -55,7 +55,21 @@
             <ul class="list-unstyled" style="max-height:200px; overflow:scroll">
                 {{#each inventory}}
                     <li>
-                        {{tag}}
+                        <b>sku:</b> {{sku}}<br/>
+                        <b>description:</b> {{description}}<br/>
+                        <b>rrp:</b> {{rrp}}<br/>
+                        <b>wholesalePrice:</b> {{wholesalePrice}}<br/>
+                        <b>brand:</b> {{brand}}<br/>
+                        <b>specifictions:</b>
+                        {{#each specifictions}}
+                            {{getSpecificationsName this}},
+                        {{/each}}
+                        <br/>
+                        <b>tags:</b>
+                        {{#each tags}}
+                             {{getTagName this}} ,
+                        {{/each}}
+                        <br/>
                         <button type="button" data-id="{{_id}}" class="close pull-xs-right remove" aria-label="Close">&times;</button>
                     </li>
                 {{/each}}

@@ -16,7 +16,8 @@ Inventory.schema = new SimpleSchema({
         autoValue: function() {
             return new Date();
         },
-        denyUpdate: true
+        denyUpdate: true,
+		optional: true
     },
 	sku: {
 		type: String,
@@ -28,22 +29,20 @@ Inventory.schema = new SimpleSchema({
 	},
 	rrp: {
 		type: Number,
-		max: 30,
 	},
 	wholesalePrice: {
 		type: Number,
-		max: 30,
 	},
 	brand: {
 		type: String,
 		max: 200,
 	},
 	specifications: {
-		type: [Number],
+		type: [String],
 		optional: true
 	},
 	tags: {
-		type: [Number],
+		type: [String],
 		optional: true
 	},
 });
@@ -65,9 +64,6 @@ export const insertInventory = new ValidatedMethod({
 	name: 'inventory.insert',
 	validate: Inventory.schema.validator(),
 	run(fields) {
-		// if (!this.userId) {
-		//   throw new Meteor.Error('unauthorized', 'You must be logged in to add a new movie!')
-		// }
 		Inventory.insert(fields);
 	}
 });
