@@ -1,5 +1,5 @@
 import { Template } from 'meteor/templating';
-import { Session } from 'meteor/session'
+import { ReactiveVar } from 'meteor/reactive-var'
 import { $ } from 'meteor/jquery';
 import Sugar from 'sugar';
 import { Specifications } from '/imports/api/specifications/specifications.js';
@@ -14,7 +14,8 @@ Template.inventory.onCreated(function() {
     this.subscribe('tags.getAll');
     this.subscribe('inventory.getAll');
   });
-  Session.set("attachedTags", []);
+  this.attachedTags = new ReactiveVar;
+  this.attachedTags.set([]);
 });
 
 Template.inventory.helpers({
@@ -25,7 +26,7 @@ Template.inventory.helpers({
         return Tags.find({});
     },
     attachedTags: function(){
-        return Sugar.Array.unique(Session.get("attachedTags"));
+        return Sugar.Array.unique(Template.instance().attachedTags.get());
     },
     specifications: function(){
         return Specifications.find({});
@@ -54,7 +55,7 @@ Template.inventory.events({
             brand: event.target.brand.value,
             sku: event.target.sku.value,
             specifications: [],
-            tags: Session.get("attachedTags")
+            tags: Template.instance().attachedTags.get()
         };
         //Select
         $('.new-inventory select').each(function(){
@@ -74,16 +75,16 @@ Template.inventory.events({
     "click .add-tag": function(event, template){
 
         const data = $(event.target).data('id');
-        var current = Session.get("attachedTags");
+        var current = Template.instance().attachedTags.get()
         current.push(data);
-        Session.set("attachedTags", current);
+        Template.instance().attachedTags.set(current);
     },
     "click .remove-tag": function(event, template){
 
         const data = $(event.target).data('id');
-        var current = Session.get("attachedTags");
+        var current = Template.instance().attachedTags.get()
         Sugar.Array.remove(current, data)
-        Session.set("attachedTags", current);
+        Template.instance().attachedTags.set(current);
     },
     "click .remove-inventory": function(event, template){
 
