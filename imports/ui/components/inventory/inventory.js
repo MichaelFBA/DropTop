@@ -4,7 +4,7 @@ import { $ } from 'meteor/jquery';
 import Sugar from 'sugar';
 import { Specifications } from '/imports/api/specifications/specifications.js';
 import { Tags } from '/imports/api/tags/tags.js';
-import { Inventory, insertInventory } from '/imports/api/inventory/inventory.js';
+import { Inventory, insertInventory, deleteInventory } from '/imports/api/inventory/inventory.js';
 
 import './inventory.html';
 
@@ -84,5 +84,20 @@ Template.inventory.events({
         var current = Session.get("attachedTags");
         Sugar.Array.remove(current, data)
         Session.set("attachedTags", current);
+    },
+    "click .remove-inventory": function(event, template){
+
+        const data = {
+            _id: $(event.target).data('id')
+        };
+
+        deleteInventory.call(data, function(error, result){
+            if(error){
+                console.log("error", error);
+            }
+            if(result){
+                console.log("result", result);
+            }
+        });
     }
 });
