@@ -1,0 +1,66 @@
+<template name="questions">
+    <h2>Questions</h2>
+    <form class="form-inline new-question">
+        <div class="input-group">
+            <input type="text" name="question" class="form-control" placeholder="Add Question...">
+            <span class="input-group-btn">
+                <button class="btn btn-secondary" type="submit">Add!</button>
+            </span>
+        </div>
+    </form>
+    <br/>
+    <div style="max-height:500px; overflow:scroll">
+        {{#each questions}}
+            {{#if isParent this}}
+                <p>
+                    {{> question q=this}}
+                    {{> subQuestions q=this allQ=questions}}
+                </p>
+            {{/if}}
+
+        {{/each}}
+    </div>
+    <hr/>
+</template>
+
+<template name="question">
+    <p>{{q.question}} <button type="button" data-id="{{_id}}" class="close pull-xs-right remove" aria-label="Close">&times;</button></p>
+</template>
+
+<template name="subQuestions">
+    <!-- Add Sub Question -->
+    <form class="form-inline new-sub-question">
+        <div class="input-group input-group-sm">
+            <input type="text" name="sub-question" class="form-control" placeholder="Add Sub Question...">
+            <span class="input-group-btn">
+                <button class="btn btn-secondary" type="submit">Add Sub Question!</button>
+            </span>
+        </div>
+    </form>
+    <ol>
+    {{#each allQ}}
+        {{#if isParent this}}
+            <li>
+            {{> question q=this}}
+            {{> subQuestions q=this allQ=allQ}}
+            </li>
+        {{/if}}
+    {{/each}}
+    </ol>
+</template>
+
+<template name="questionTags">
+    <!-- Tags -->
+    <form class="form-inline m-b-1">
+        <div class="form-group">
+            {{#each t}}
+                <button type="button" data-id="{{_id}}" class="btn btn-secondary btn-sm add-tag" aria-label="Close">{{tag}}</button>
+            {{/each}}
+        </div>
+        <div class="form-group">
+            {{#each q.tags}}
+                <button type="button" data-id="{{this}}" class="btn btn-success btn-sm remove-tag" aria-label="Close">{{getTagName this}} &times;</button>
+            {{/each}}
+        </div>
+    </form>
+</template>
