@@ -1,0 +1,47 @@
+<template name="questionnaire">
+    <section class="flex-container vertical h100">
+        <div class="flex-item flex-grow-0 bbt thin">
+            {{>questionnaireHeader}}
+        </div>
+        <div class="flex-item flex-grow-1 vertical p-a-1">
+            <h2 class="fw300 ff-roboto">Question 1</h2>
+        </div>
+        <div class="flex-item flex-grow-0 p-a-1 text-xs-right">
+            <a href="#">Next Question</a>
+        </div>
+        <div class="flex-item flex-grow-0">
+            {{> questionnaireTags tags=tags}}
+        </div>
+    </section>
+</template>
+
+<template name="questionnaireHeader">
+    <header class="row flex-items-xs-middle m-a-0">
+        <div class="col-xs-2">
+            <button type="button" class="btn btn-link">&#65513;</button>
+        </div>
+        <div class="col-xs-8 text-xs-center">
+            <h6 class="m-b-0">
+                Questions & Answers<br/>
+                <small class="m-b-0 text-muted">1 of 5</small>
+            </h6>
+        </div>
+    </header>
+</template>
+
+<template name="questionnaireTags">
+    <div class="customer-tags p-y-1 p-l-1">
+        <h6 class="darker-color m-b-1">Current selection</h6>
+        <section class="overflow-sideways">
+            <div  style="width:{{dynamicWidth}}px">
+                {{#each tags}}
+                <span class="tag tag-default">{{tag}}
+                    <button type="button" class="close" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </span>
+                {{/each}}
+            </div>
+        </section>
+    </div>
+</template>

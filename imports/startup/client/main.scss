@@ -1,5 +1,30 @@
-@import "{}/node_modules/bootstrap/scss/bootstrap.scss";
+$theme-black-bg: #222;
+$theme-black-color: #ff5252;
 
+@import "{}/imports/startup/styles/variables.scss";
+@import "{}/node_modules/bootstrap/scss/bootstrap.scss";
+@import "{}/imports/ui/pages/questionnaire/questionnaire.scss";
+
+//overrides
+@import "{}/imports/startup/styles/tags.scss";
+@import "{}/imports/startup/styles/utilities.scss";
+@import "{}/imports/startup/styles/flex.scss";
+@import "{}/imports/startup/styles/type.scss";
+
+body,html{
+    margin: 0;
+    height:100%;
+}
 body{
     background-color: whitesmoke;
+    font-family: 'Roboto', sans-serif;
+
+    &.theme-black{
+        background: $theme-black-bg;
+        color: #fff;
+
+        a{
+            color: $theme-black-color;
+        }
+    }
 }

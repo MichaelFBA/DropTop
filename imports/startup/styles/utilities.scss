@@ -1,0 +1,14 @@
+.h100{
+    height: 100%;
+}
+
+.bbt{
+    border-bottom: 1px solid transparent;
+
+    &.thin{
+        border-color: rgba(255, 255, 255, 0.2);
+    }
+    &.thick{
+        border-color: rgba(255, 255, 255, 1);
+    }
+}

@@ -1,0 +1,22 @@
+.theme-black{
+    .customer-tags{
+        flex-grow: 0 !important;
+        background-color: $theme-black-color;
+
+        .darker-color{
+            color: darken($theme-black-color, 30%)
+        }
+        .close{
+            line-height: 0.8em;
+            margin-left: 10px;
+        }
+    }
+}
+
+.overflow-sideways{
+    overflow-y: scroll;
+}
+
+header{
+    min-height: 60px;
+}

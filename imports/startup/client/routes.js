@@ -14,6 +14,7 @@ import '../../ui/layouts/footer/footer.js';
 //Pages
 import '../../ui/pages/home/home.js';
 import '../../ui/pages/admin/admin.js';
+import '../../ui/pages/questionnaire/questionnaire.js';
 
 //Components
 import '../../ui/components/helpers/helpers.js';
@@ -31,6 +32,16 @@ FlowRouter.route('/', {
             header: "header",
             content: "home",
             footer: "footer",
+        });
+	}
+});
+
+FlowRouter.route('/questionnaire/:questionId', {
+	action: function(params, queryParams) {
+		BlazeLayout.render('main', {
+            // header: "header",
+            content: "questionnaire",
+            // footer: "footer",
         });
 	}
 });

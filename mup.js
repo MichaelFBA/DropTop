@@ -1,9 +1,9 @@
 module.exports = {
   servers: {
     one: {
-      host: 'droptop.odd13.com',
-      username: 'michael',
-    //   pem: '~/.ssh/id_rsa'
+      host: '192.158.29.145',
+      username: 'michael'
+      // pem:
       // password:
       // or leave blank for authenticate from ssh-agent
     }
@@ -19,11 +19,11 @@ module.exports = {
       serverOnly: true,
     },
     env: {
-      ROOT_URL: 'app.com',
+      ROOT_URL: 'droptop.odd13.com',
       MONGO_URL: 'mongodb://localhost/meteor'
     },
 
-    //dockerImage: 'kadirahq/meteord'
+    dockerImage: 'abernix:meteord:base',
     deployCheckWaitTime: 60
   },
 
