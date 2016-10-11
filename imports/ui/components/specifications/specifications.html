@@ -1,16 +1,10 @@
 <template name="specifications">
-    <h2>Specifications</h2>
-    <form class="form-inline new-spec">
-        <div class="form-group">
-            <input type="text" name="type" class="form-control" placeholder="Add type... ie [cpu] ">
-        </div>
-        <div class="form-group">
-            <input type="text" name="value" class="form-control" placeholder="Add value...">
-        </div>
-        <button type="submit" class="btn btn-secondary">Add!</button>
-    </form>
-    <br/>
-    <form class="form-inline">
+    <h2>
+        Specifications
+        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addSpec"><i class="fa fa-plus" aria-hidden="true"></i></button>
+    </h2>
+
+    <form class="form-inline m-y-1">
         {{#each uniqueSpecifications}}
             <div class="form-group">
                 <label class="small" for="">{{type}}</label><br/>
@@ -22,19 +16,48 @@
             </div>
         {{/each}}
     </form>
-    <form class="">
-        <div class="form-group">
-            <ul class="list-unstyled" style="max-height:200px; overflow:scroll">
+    <div style="max-height:500px; overflow:scroll">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Type</th>
+                    <th>Value</th>
+                    <th>Remove</th>
+                </tr>
+            </thead>
+            <tbody>
                 {{#each specifications}}
-                    <li>
-                        <strong>Type:</strong> {{type}}
-                        <button type="button" data-id="{{_id}}" class="close pull-xs-right remove" aria-label="Close">&times;</button>
-                        <br/>
-                        <strong>Value:</strong> {{value}}
-                    </li>
-                {{/each}}
-            </ul>
+                <tr>
+                    <th scope="row">{{@index}}</th>
+                    <td>{{type}}</td>
+                    <td>{{value}}</td>
+                    <td><button type="button" data-id="{{_id}}" class="btn btn-danger btn-sm remove"><i class="fa fa-remove" aria-hidden="true"></i></button></td>
+                </tr>
+              {{/each}}
+          </tbody>
+        </table>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade black" id="addSpec" tabindex="-1" role="dialog" aria-labelledby="addSpecLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form class="new-spec">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Add type (lowercase + camelCase)</label>
+                            <input type="text" name="type" class="form-control" placeholder="Add type... ie [cpu] ">
+                        </div>
+                        <div class="form-group">
+                            <label>Add value</label>
+                            <input type="text" name="value" class="form-control" placeholder="Add value...">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" type="submit">Add!</button>
+                    </div>
+                </form>
+            </div>
         </div>
-    </form>
-    <hr/>
+    </div>
 </template>
