@@ -7,7 +7,7 @@
             <h2 class="fw300 ff-roboto">Question 1</h2>
         </div>
         <div class="flex-item flex-grow-0 p-a-1 text-xs-right">
-            <a href="#">Next Question</a>
+            <a href="#">Next Question <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
         </div>
         <div class="flex-item flex-grow-0">
             {{> questionnaireTags tags=tags}}
@@ -18,7 +18,7 @@
 <template name="questionnaireHeader">
     <header class="row flex-items-xs-middle m-a-0">
         <div class="col-xs-2">
-            <button type="button" class="btn btn-link">&#65513;</button>
+            <a href="#"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
         </div>
         <div class="col-xs-8 text-xs-center">
             <h6 class="m-b-0">
@@ -30,18 +30,16 @@
 </template>
 
 <template name="questionnaireTags">
-    <div class="customer-tags p-y-1 p-l-1">
+    <div class="customer-tags p-y-1 p-l-1 transition">
         <h6 class="darker-color m-b-1">Current selection</h6>
         <section class="overflow-sideways">
-            <div  style="width:{{dynamicWidth}}px">
-                {{#each tags}}
-                <span class="tag tag-default">{{tag}}
-                    <button type="button" class="close" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </span>
-                {{/each}}
-            </div>
+            {{#each tags}}
+            <span class="tag tag-default">{{tag}}
+                <button type="button" class="close" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </span>
+            {{/each}}
         </section>
     </div>
 </template>
