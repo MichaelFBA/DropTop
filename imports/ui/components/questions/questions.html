@@ -1,5 +1,5 @@
 <template name="questions">
-    <h2>Questions <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus" aria-hidden="true"></i></button></h2>
+    <h2>Questions <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addQuestion"><i class="fa fa-plus" aria-hidden="true"></i></button></h2>
 
     <table class="table">
         <thead>
@@ -12,28 +12,45 @@
         </thead>
         <tbody>
             {{#each questions}}
-            {{#if isParent this}}
-            <tr>
-                <th scope="row">{{@index}}</th>
-                <td>{{question}} <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">Add Sub Question</button></td>
-                <td>
-                    {{#each answers}}
-                        <span>{{getAnswer answer}}</span><br/>
-                    {{/each}}
-                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">Add Answer</button>
-                </td>
-                <td>{{#each answers}}
-                        <span>{{getTagName tag}}</span><br/>
-                    {{/each}}
-                </td>
-            </tr>
-            {{/if}}
+                {{#if isParent this}}
+                <tr>
+                    <th scope="row">{{@index}}</th>
+                    <td>{{question}} <button type="button" class="btn btn-primary btn-sm set-question-id" data-id="{{_id}}" data-toggle="modal" data-target="#addSubQuestion">Add Sub Question</button></td>
+                    <td>
+                        {{#each answers}}
+                            <span class="tag tag-info">{{getAnswer answer}}</span>
+                        {{/each}}
+                        <button type="button" class="btn btn-primary btn-sm set-question-id" data-id="{{_id}}" data-toggle="modal" data-target="#addAnswer">Add Answer</button>
+                    </td>
+                    <td>{{#each answers}}
+                            <span class="tag tag-primary">{{getTagName tag}}</span><br/>
+                        {{/each}}
+                    </td>
+                </tr>
+                {{/if}}
+                {{#each getSubQuestions _id}}
+                    <tr>
+                        <th scope="row"><small>.{{@index}}</small></th>
+                        <td>{{question}} <button type="button" class="btn btn-primary btn-sm set-sub-question" data-id="{{_id}}" data-toggle="modal" data-target="#addSubQuestion">Add Sub Question</button></td>
+                        <td>
+                            {{#each answers}}
+                                <span class="tag tag-info">{{getAnswer answer}}</span>
+                            {{/each}}
+                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addAnswer">Add Answer</button>
+                        </td>
+                        <td>{{#each answers}}
+                                <span class="tag tag-primary">{{getTagName tag}}</span><br/>
+                            {{/each}}
+                        </td>
+                    </tr>
+                {{/each}}
+
           {{/each}}
       </tbody>
     </table>
 
-    <!-- Modal -->
-    <div class="modal fade black" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <!-- Modal Question -->
+    <div class="modal fade black" id="addQuestion" tabindex="-1" role="dialog" aria-labelledby="addQuestionLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <form class="new-question">
@@ -62,5 +79,65 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal Sub Question -->
+    <div class="modal fade black" id="addSubQuestion" tabindex="-1" role="dialog" aria-labelledby="addQuestionLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form class="new-sub-question">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Add Question</label>
+                            <input type="text" name="sub-question" class="form-control" placeholder="Add Question...">
+                        </div>
+                        <div class="form-group">
+                            <label>Add Answer</label>
+                            <input type="text" name="answer" class="form-control" placeholder="Add Answer...">
+                        </div>
+                        <div class="form-group">
+                            <label>Select Tag (You need to add them all first)</label>
+                            <select class="form-control" name="tags">
+                                {{#each tags}}
+                                <option value="{{_id}}">{{tag}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" type="submit">Add!</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Answer -->
+    <div class="modal fade black" id="addAnswer" tabindex="-1" role="dialog" aria-labelledby="addQuestionLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form class="add-answer">
+                    <div class="modal-body">
+
+                        <div class="form-group">
+                            <label>Add Answer</label>
+                            <input type="text" name="answer" class="form-control" placeholder="Add Answer...">
+                        </div>
+                        <div class="form-group">
+                            <label>Select Tag (You need to add them all first)</label>
+                            <select class="form-control" name="tags">
+                                {{#each tags}}
+                                <option value="{{_id}}">{{tag}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" type="submit">Add!</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
 
 </template>

@@ -60,6 +60,17 @@ export const deleteQuestion = new ValidatedMethod({
 	}
 });
 
+export const updateQuestionAnswers = new ValidatedMethod({
+	name: 'questions.answers.update',
+	validate: function(){},
+	run(fields) {
+		return Questions.update(
+			{_id: fields._id},
+			{ $addToSet: {answers: fields.answers } }
+		);
+	}
+});
+
 
 //Publications
 if (Meteor.isServer) {
