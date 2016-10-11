@@ -5,7 +5,7 @@ import { ValidatedMethod } from 'meteor/mdg:validated-method';
 
 export const Questions = new Mongo.Collection('Questions');
 
-Answers = new SimpleSchema({
+const Answers = new SimpleSchema({
 	tag: {
 		type: String,
 		max: 50,
@@ -33,11 +33,7 @@ Questions.schema = new SimpleSchema({
 	parentId: {
 		type: String,
 		optional: true
-	},
-	tags: {
-		type: [String],
-		optional: true
-	},
+	}
 });
 
 Questions.attachSchema(Questions.schema);
@@ -45,7 +41,7 @@ Questions.attachSchema(Questions.schema);
 Questions.publicFields = {
 	question: 1,
 	subQuestions: 1,
-	tags: 1
+	answers: 1
 };
 
 export const insertQuestion = new ValidatedMethod({

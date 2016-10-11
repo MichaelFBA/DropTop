@@ -1,48 +1,108 @@
 <template name="questions">
-    <h2>Questions</h2>
-    <form class="form-inline new-question">
-        <div class="input-group">
-            <input type="text" name="question" class="form-control" placeholder="Add Question...">
-            <span class="input-group-btn">
-                <button class="btn btn-secondary" type="submit">Add!</button>
-            </span>
-        </div>
-    </form>
-    <br/>
-    <div style="max-height:500px; overflow:scroll">
-        {{#each questions}}
-            {{#if isParent this}}
-                <p>
-                    {{> question q=this}}
-                    {{> subQuestions q=this allQ=questions}}
-                </p>
-            {{/if}}
+    <h2>Questions <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus" aria-hidden="true"></i></button></h2>
 
-        {{/each}}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Question</th>
+                <th>Answer</th>
+                <th>Tags</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each questions}}
+            {{#if isParent this}}
+            <tr>
+                <th scope="row">{{@index}}</th>
+                <td>{{question}} <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">Add Sub Question</button></td>
+                <td>
+                    {{#each answers}}
+                        <span>{{getAnswer answer}}</span><br/>
+                    {{/each}}
+                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">Add Answer</button>
+                </td>
+                <td>{{#each answers}}
+                        <span>{{getTagName tag}}</span><br/>
+                    {{/each}}
+                </td>
+            </tr>
+            {{/if}}
+          {{/each}}
+      </tbody>
+    </table>
+
+    <!-- Modal -->
+    <div class="modal fade black" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form class="new-question">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Add Question</label>
+                            <input type="text" name="question" class="form-control" placeholder="Add Question...">
+                        </div>
+                        <div class="form-group">
+                            <label>Add Answer</label>
+                            <input type="text" name="answer" class="form-control" placeholder="Add Answer...">
+                        </div>
+                        <div class="form-group">
+                            <label>Select Tag (You need to add them all first)</label>
+                            <select class="form-control" name="tags">
+                                {{#each tags}}
+                                <option value="{{_id}}">{{tag}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" type="submit">Add!</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-    <hr/>
+
 </template>
 
 <template name="question">
-    <p>{{q.question}} <button type="button" data-id="{{_id}}" class="close pull-xs-right remove" aria-label="Close">&times;</button></p>
+    <h5>
+        {{q.question}}
+
+        <button type="button" data-id="{{_id}}" class="close pull-xs-right remove" aria-label="Close">&times;</button>
+    </h5>
 </template>
 
 <template name="subQuestions">
     <!-- Add Sub Question -->
-    <form class="form-inline new-sub-question">
-        <div class="input-group input-group-sm">
+    <form class="form-inline new-sub-question m-b-1">
+        <div class="form-group">
+            <label class="small">Add Sub Question</label>
             <input type="text" name="sub-question" class="form-control" placeholder="Add Sub Question...">
-            <span class="input-group-btn">
-                <button class="btn btn-secondary" type="submit">Add Sub Question!</button>
-            </span>
         </div>
+        <button class="btn btn-primary" type="submit">Add Sub Question!</button>
+    </form>
+    <!-- Add Sub Answer -->
+    <form class="form-inline new-sub-question m-b-1">
+        <div class="form-group">
+            <label class="small">Add Sub Answer</label>
+            <input type="text" name="sub-question" class="form-control" placeholder="Add Sub Answer...">
+        </div>
+        <div class="form-group">
+            <select class="form-control">
+                {{#each tags}}
+                    <option value="{{_id}}">{{tag}}</option>
+                {{/each}}
+            </select>
+        </div>
+        <button class="btn btn-primary" type="submit">Add Sub Answer!</button>
     </form>
     <ol>
     {{#each allQ}}
         {{#if isParent this}}
             <li>
             {{> question q=this}}
-            {{> subQuestions q=this allQ=allQ}}
+            {{> subQuestions q=this allQ=allQ tags=tags}}
             </li>
         {{/if}}
     {{/each}}
@@ -54,7 +114,7 @@
     <form class="form-inline m-b-1">
         <div class="form-group">
             {{#each t}}
-                <button type="button" data-id="{{_id}}" class="btn btn-secondary btn-sm add-tag" aria-label="Close">{{tag}}</button>
+                <button type="button" data-id="{{_id}}" class="btn btn-primary btn-sm add-tag" aria-label="Close">{{tag}}</button>
             {{/each}}
         </div>
         <div class="form-group">

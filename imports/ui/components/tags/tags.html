@@ -1,33 +1,44 @@
 <template name="tags">
-    <h2>Tags</h2>
-    <form class="form-inline new-tag">
-        <div class="input-group">
-            <input type="text" name="tag" class="form-control" placeholder="Add Tag...">
-            <span class="input-group-btn">
-                <button class="btn btn-secondary" type="submit">Add!</button>
-            </span>
+    <h2>
+        Tags
+        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addTag"><i class="fa fa-plus" aria-hidden="true"></i></button>
+    </h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Tags</th>
+                <th>Remove</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each tags}}
+            <tr>
+                <th scope="row">{{@index}}</th>
+                <td>{{tag}}</td>
+                <td><button type="button" data-id="{{_id}}" class="btn btn-danger btn-sm remove"><i class="fa fa-remove" aria-hidden="true"></i></button></td>
+            </tr>
+          {{/each}}
+      </tbody>
+    </table>
+
+    <!-- Modal -->
+    <div class="modal fade black" id="addTag" tabindex="-1" role="dialog" aria-labelledby="addTagLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form class="new-tag">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Add Tag</label>
+                            <input type="text" name="tag" class="form-control" placeholder="Add Tag...">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" type="submit">Add!</button>
+                    </div>
+                </form>
+            </div>
         </div>
-    </form>
-    <br/>
-    <form class="">
-        <div class="form-group">
-            <label class="small" for="">Tags</label>
-            <select class="form-control form-control-sm">
-                {{#each tags}}
-                <option>{{tag}}</option>
-                {{/each}}
-            </select>
-        </div>
-        <div class="form-group">
-            <ul class="list-unstyled" style="max-height:200px; overflow:scroll">
-                {{#each tags}}
-                    <li>
-                        {{tag}}
-                        <button type="button" data-id="{{_id}}" class="close pull-xs-right remove" aria-label="Close">&times;</button>
-                    </li>
-                {{/each}}
-            </ul>
-        </div>
-    </form>
-    <hr/>
+    </div>
 </template>
