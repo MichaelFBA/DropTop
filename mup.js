@@ -1,7 +1,7 @@
 module.exports = {
   servers: {
     one: {
-      host: '192.158.29.145',
+      host: '130.211.89.59',
       username: 'michael'
       // pem:
       // password:
@@ -19,11 +19,12 @@ module.exports = {
       serverOnly: true,
     },
     env: {
-      ROOT_URL: 'droptop.odd13.com',
+      ROOT_URL: 'http://droptop.odd13.com',
       MONGO_URL: 'mongodb://localhost/meteor'
     },
 
-    dockerImage: 'abernix:meteord:base',
+    dockerImage: 'abernix/meteord:base',
+//      dockerImage: 'meteorhacks/meteord:onbuild',
     deployCheckWaitTime: 60
   },
 

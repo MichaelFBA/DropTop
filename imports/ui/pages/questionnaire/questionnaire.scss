@@ -1,15 +1,9 @@
-.theme-black{
-    .customer-tags{
-        flex-grow: 0 !important;
-        background-color: $theme-black-color;
+.customer-tags{
+    flex-grow: 0 !important;
 
-        .darker-color{
-            color: darken($theme-black-color, 30%)
-        }
-        .close{
-            line-height: 0.8em;
-            margin-left: 10px;
-        }
+    .close{
+        line-height: 0.8em;
+        margin-left: 10px;
     }
 }
 

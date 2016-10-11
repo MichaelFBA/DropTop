@@ -5,6 +5,17 @@ import { ValidatedMethod } from 'meteor/mdg:validated-method';
 
 export const Questions = new Mongo.Collection('Questions');
 
+Answers = new SimpleSchema({
+	tag: {
+		type: String,
+		max: 50,
+	},
+	answer: {
+		type: String,
+		max: 50,
+	},
+});
+
 Questions.schema = new SimpleSchema({
 	_id: {
     	type: String,
@@ -14,6 +25,10 @@ Questions.schema = new SimpleSchema({
 	question: {
 		type: String,
 		max: 1000,
+	},
+	answers: {
+		type: [Answers],
+		optional: true
 	},
 	parentId: {
 		type: String,
