@@ -38,7 +38,7 @@ export const deleteTag = new ValidatedMethod({
 
 	},
 	run(fields) {
-		Tags.remove(fields);
+		return Tags.remove(fields);
 	}
 });
 

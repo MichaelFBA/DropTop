@@ -4,8 +4,6 @@ import { Questions, insertQuestion, deleteQuestion } from '/imports/api/question
 import { Answers, insertAnswer } from '/imports/api/answers/answers.js';
 import { Tags } from '/imports/api/tags/tags.js';
 import './questions.html';
-import './questionTags.js';
-import './subQuestions.js';
 
 Template.questions.onCreated(function() {
   this.autorun(() => {
@@ -48,7 +46,7 @@ Template.questions.events({
     "click .remove": function(event, template){
 
         const data = {
-            _id: $(event.target).data('id')
+            _id: $(event.target).parent().data('id')
         };
 
         deleteQuestion.call(data, function(error, result){
