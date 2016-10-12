@@ -8,10 +8,11 @@
                 <th>Question</th>
                 <th>Answer</th>
                 <th>Tags</th>
+                <th>Remove</th>
             </tr>
         </thead>
         <tbody>
-            {{#each questions}}
+            {{#each questions.primary}}
                 {{#if isParent this}}
                 <tr>
                     <th scope="row">{{@index}}</th>
@@ -26,9 +27,10 @@
                             <span class="tag tag-primary">{{getTagName tag}}</span><br/>
                         {{/each}}
                     </td>
+                    <td><button type="button" data-id="{{_id}}" class="btn btn-danger btn-sm"><i class="fa fa-remove" aria-hidden="true"></i></button></td>
                 </tr>
                 {{/if}}
-                {{#each getSubQuestions _id}}
+                {{#each getSubQuestions questions _id}}
                     <tr>
                         <th scope="row"><small>.{{@index}}</small></th>
                         <td>{{question}} <button type="button" class="btn btn-primary btn-sm set-sub-question" data-id="{{_id}}" data-toggle="modal" data-target="#addSubQuestion">Add Sub Question</button></td>
@@ -42,7 +44,25 @@
                                 <span class="tag tag-primary">{{getTagName tag}}</span><br/>
                             {{/each}}
                         </td>
+                        <td><button type="button" data-id="{{_id}}" class="btn btn-danger btn-sm"><i class="fa fa-remove" aria-hidden="true"></i></button></td>
                     </tr>
+                    {{#each getSubQuestions questions _id}}
+                        <tr>
+                            <th scope="row"><small>.{{@index}}</small></th>
+                            <td>{{question}} <button type="button" class="btn btn-primary btn-sm set-sub-question" data-id="{{_id}}" data-toggle="modal" data-target="#addSubQuestion">Add Sub Question</button></td>
+                            <td>
+                                {{#each answers}}
+                                    <span class="tag tag-info">{{getAnswer answer}}</span>
+                                {{/each}}
+                                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addAnswer">Add Answer</button>
+                            </td>
+                            <td>{{#each answers}}
+                                    <span class="tag tag-primary">{{getTagName tag}}</span><br/>
+                                {{/each}}
+                            </td>
+                            <td><button type="button" data-id="{{_id}}" class="btn btn-danger btn-sm"><i class="fa fa-remove" aria-hidden="true"></i></button></td>
+                        </tr>
+                    {{/each}}
                 {{/each}}
 
           {{/each}}

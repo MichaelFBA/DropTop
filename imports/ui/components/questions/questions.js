@@ -1,8 +1,9 @@
 import { Template } from 'meteor/templating';
 import { $ } from 'meteor/jquery';
 import { Questions, insertQuestion, deleteQuestion, updateQuestionAnswers } from '/imports/api/questions/questions.js';
-import { Answers, insertAnswer } from '/imports/api/answers/answers.js';
-import { ReactiveVar } from 'meteor/reactive-var'
+import { Answers, insertAnswer, deleteAnswer } from '/imports/api/answers/answers.js';
+import { ReactiveVar } from 'meteor/reactive-var';
+import Sugar from 'sugar';
 import { Tags } from '/imports/api/tags/tags.js';
 import './questions.html';
 
@@ -19,7 +20,15 @@ Template.questions.onCreated(function() {
 
 Template.questions.helpers({
     questions: function(){
-        return Questions.find({});
+        const questions = Questions.find({}).fetch();
+        const groupedQuestions = Sugar.Array.groupBy(questions, function(n) {
+            return n.parentId;
+        });
+        if(groupedQuestions.hasOwnProperty('undefined')){
+            groupedQuestions.primary = groupedQuestions['undefined'];
+            delete groupedQuestions['undefined'];
+            return groupedQuestions
+        }
     },
     isParent: function(question){
         return !question.hasOwnProperty("parentId");
@@ -27,8 +36,8 @@ Template.questions.helpers({
     tags: function(){
         return Tags.find({});
     },
-    getSubQuestions: function(id){
-        return Questions.find({parentId: id});
+    getSubQuestions: function(questions, id){
+        return questions ? questions[id] : [];
     }
 });
 
@@ -50,20 +59,38 @@ Template.questions.events({
             }
         });
     },
-    "click .remove": function(event, template){
+    "click .fa-remove": function(event, template){
 
         const data = {
             _id: $(event.target).parent().data('id')
         };
+        const toDelete = Questions.findOne({_id: data._id});
+        const childrenToDelete = Questions.find({parentId: data._id}).fetch();
 
-        deleteQuestion.call(data, function(error, result){
-            if(error){
-                console.log("error", error);
-            }
-            if(result){
-                console.log("result", result);
-            }
-        });
+        //Delete All sub Children Answers & Questions
+        if(childrenToDelete && childrenToDelete.length){
+            childrenToDelete.forEach(function(childQuestion){
+                if(childQuestion && childQuestion.answers){
+                    deleteAnswers(childQuestion.answers)
+                }
+                deleteQuestion.call({_id: childQuestion._id});
+            })
+        }
+
+        //Delete Current Answers
+        if(toDelete && toDelete.answers){
+            deleteAnswers(toDelete.answers)
+        }
+        //Delete Current Question
+        deleteQuestion.call(data);
+
+
+        function deleteAnswers(answersArray){
+            answersArray.forEach(function(a){
+                deleteAnswer.call({_id: a.answer});
+            })
+        }
+
     },
     "click .set-question-id": function(event, template){
         const dataId = $(event.target).data('id');
