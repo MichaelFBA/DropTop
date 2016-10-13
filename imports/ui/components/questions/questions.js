@@ -7,18 +7,17 @@ import Sugar from 'sugar';
 import { Tags } from '/imports/api/tags/tags.js';
 import './questions.html';
 
+export const questionId = new ReactiveVar(null);
+
 Template.questions.onCreated(function() {
-    this.questionId = new ReactiveVar;
     this.isChecked = new ReactiveVar;
-    this.questionId.set(null);
     this.isChecked.set(false);
 
-  this.autorun(() => {
-    this.subscribe('questions.getAll');
-    this.subscribe('answers.getAll');
-  });
+    this.autorun(() => {
+        this.subscribe('questions.getAll');
+        this.subscribe('answers.getAll');
+    });
 });
-
 
 Template.questions.helpers({
     questions: function(){
@@ -42,7 +41,7 @@ Template.questions.helpers({
         return Template.instance().isChecked.get();
     },
     isAddingSubQuestion: function(){
-        return Template.instance().questionId.get();
+        return questionId.get();
     }
 });
 
@@ -95,10 +94,10 @@ Template.questions.events({
     },
     "click .set-question-id": function(event, template){
         const dataId = $(event.target).data('id');
-        Template.instance().questionId.set(dataId);
+        questionId.set(dataId);
     },
     "click .remove-question-id": function(event, template){
-        Template.instance().questionId.set(null);
+        questionId.set(null);
     },
     "submit .new-sub-question": function(event, template){
          event.preventDefault();
@@ -106,7 +105,7 @@ Template.questions.events({
          const answerData = { answer: event.target.answer.value };
          const questionData = {
              question: event.target['sub-question'].value,
-             parentId: Template.instance().questionId.get(),
+             parentId: questionId.get(),
              answers: [{
                  tag: event.target.tags.value
              }]
@@ -124,7 +123,7 @@ Template.questions.events({
          event.preventDefault();
          const answerData = { answer: event.target.answer.value };
          const questionData = {
-             _id: Template.instance().questionId.get(),
+             _id: questionId.get(),
              answers: {
                  tag: event.target.tags.value
              }
@@ -150,12 +149,12 @@ function insertAnswerThenQuestion(event){
                     tag: event.target.tags.value
                 }]
             };
-            insertQuestion.call(questionData);
+            insertQuestion.call(questionId.get() ? modifyIfParent(questionData) : questionData);
         }
     });
 };
 
-function insertYesNo(event){
+function insertYesNo(event, Template){
     const questionData = {
         question: event.target.question.value,
         answers: [
@@ -169,5 +168,10 @@ function insertYesNo(event){
             }
         ]
     };
-    insertQuestion.call(questionData);
+    insertQuestion.call(questionId.get() ? modifyIfParent(questionData) : questionData);
 };
+
+function modifyIfParent(data){
+    data.parentId = questionId.get()
+    return data;
+}
