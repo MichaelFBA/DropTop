@@ -9,6 +9,7 @@ const Answers = new SimpleSchema({
 	tag: {
 		type: String,
 		max: 50,
+		optional: true
 	},
 	answer: {
 		type: String,

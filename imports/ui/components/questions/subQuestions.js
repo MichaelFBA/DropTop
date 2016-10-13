@@ -5,9 +5,9 @@ import { Answers, insertAnswer, deleteAnswer } from '/imports/api/answers/answer
 import { ReactiveVar } from 'meteor/reactive-var';
 import Sugar from 'sugar';
 import { Tags } from '/imports/api/tags/tags.js';
-import './questions.html';
+import './subQuestions.html';
 
-Template.questions.onCreated(function() {
+Template.subQuestions.onCreated(function() {
     this.questionId = new ReactiveVar;
     this.isChecked = new ReactiveVar;
     this.questionId.set(null);
@@ -20,33 +20,19 @@ Template.questions.onCreated(function() {
 });
 
 
-Template.questions.helpers({
-    questions: function(){
-        const questions = Questions.find({}).fetch();
-        const groupedQuestions = Sugar.Array.groupBy(questions, function(n) {
-            return n.parentId;
-        });
-        if(groupedQuestions.hasOwnProperty('undefined')){
-            groupedQuestions.primary = groupedQuestions['undefined'];
-            delete groupedQuestions['undefined'];
-            return groupedQuestions
-        }
-    },
-    isParent: function(question){
-        return !question.hasOwnProperty("parentId");
-    },
+Template.subQuestions.helpers({
     tags: function(){
         return Tags.find({});
     },
+    getSubQuestions: function(questions, id){
+        return questions ? questions[id] : [];
+    },
     checked: function(){
         return Template.instance().isChecked.get();
-    },
-    isAddingSubQuestion: function(){
-        return Template.instance().questionId.get();
     }
 });
 
-Template.questions.events({
+Template.subQuestions.events({
     "change .check-changed": function(event){
         Template.instance().isChecked.set(event.target.checked);
     },
@@ -96,9 +82,6 @@ Template.questions.events({
     "click .set-question-id": function(event, template){
         const dataId = $(event.target).data('id');
         Template.instance().questionId.set(dataId);
-    },
-    "click .remove-question-id": function(event, template){
-        Template.instance().questionId.set(null);
     },
     "submit .new-sub-question": function(event, template){
          event.preventDefault();

@@ -37,7 +37,7 @@ Template.tags.events({
     "click .remove": function(event, template){
 
         const data = {
-            _id: $(event.target).parent().data('id')
+            _id: $(event.target).data('id')
         };
 
         deleteTag.call(data, function(error, result){

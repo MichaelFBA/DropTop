@@ -39,6 +39,17 @@ export const deleteAnswer = new ValidatedMethod({
 	}
 });
 
+export const updateAnswer = new ValidatedMethod({
+	name: 'answer.update',
+	validate: Answers.schema.validator(),
+	run(fields) {
+		return Answers.upsert(
+			fields,
+			{$set: fields }
+		);
+	}
+});
+
 
 //Publications
 if (Meteor.isServer) {

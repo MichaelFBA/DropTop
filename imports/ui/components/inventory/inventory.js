@@ -81,7 +81,7 @@ Template.inventory.events({
     },
     "click .remove-tag": function(event, template){
 
-        const data = $(event.target).parent().data('id');
+        const data = $(event.target).data('id');
         var current = Template.instance().attachedTags.get()
         Sugar.Array.remove(current, data)
         Template.instance().attachedTags.set(current);
@@ -89,7 +89,7 @@ Template.inventory.events({
     "click .remove-inventory": function(event, template){
 
         const data = {
-            _id: $(event.target).parent().data('id')
+            _id: $(event.target).data('id')
         };
 
         deleteInventory.call(data, function(error, result){

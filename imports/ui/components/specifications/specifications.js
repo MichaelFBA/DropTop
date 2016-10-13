@@ -48,7 +48,7 @@ Template.specifications.events({
     "click .remove": function(event, template){
 
         const data = {
-            _id: $(event.target).parent().data('id')
+            _id: $(event.target).data('id')
         };
 
         deleteSpec.call(data, function(error, result){

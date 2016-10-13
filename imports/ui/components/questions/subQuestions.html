@@ -1,0 +1,20 @@
+<template name="subQuestions">
+    {{#each getSubQuestions questions id}}
+        <tr>
+            <th scope="row"><small>.{{@index}}</small></th>
+            <td>{{question}} <button type="button" class="btn btn-primary btn-sm set-sub-question" data-id="{{_id}}" data-toggle="modal" data-target="#addSubQuestion">Add Sub Question</button></td>
+            <td>
+                {{#each answers}}
+                    <span class="tag tag-info">{{getAnswer answer}}</span>
+                {{/each}}
+                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addAnswer">Add Answer</button>
+            </td>
+            <td>{{#each answers}}
+                    <span class="tag tag-primary">{{getTagName tag}}</span><br/>
+                {{/each}}
+            </td>
+            <td><button type="button" data-id="{{_id}}" class="btn btn-danger btn-sm remove">x</button></td>
+        </tr>
+        {{> subQuestions questions=questions id=id}}
+    {{/each}}
+</template>

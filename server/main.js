@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import Sugar from 'sugar';
 import { updateSpec } from '/imports/api/specifications/specifications.js';
+import { updateAnswer } from '/imports/api/answers/answers.js';
 
 //Api
 import '/imports/api/tags/tags.js';
@@ -13,6 +14,7 @@ import '/imports/api/answers/answers.js';
 Meteor.startup(() => {
     //Fixtures
     var LaptopFixture = JSON.parse(Assets.getText('fixtures/laptops.json'));
+    var AnswersFixture = JSON.parse(Assets.getText('fixtures/answers.json'));
 
     Sugar.Object.forEach(LaptopFixture, function(val){
         Sugar.Object.forEach(val, function(val, key){
@@ -23,4 +25,8 @@ Meteor.startup(() => {
             updateSpec.call(data);
         })
     })
+
+    Sugar.Object.forEach(AnswersFixture, function(val){
+        updateAnswer.call(val);
+    });
 });
