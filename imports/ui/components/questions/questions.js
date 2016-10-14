@@ -99,26 +99,6 @@ Template.questions.events({
     "click .remove-question-id": function(event, template){
         questionId.set(null);
     },
-    "submit .new-sub-question": function(event, template){
-         event.preventDefault();
-
-         const answerData = { answer: event.target.answer.value };
-         const questionData = {
-             question: event.target['sub-question'].value,
-             parentId: questionId.get(),
-             answers: [{
-                 tag: event.target.tags.value
-             }]
-         };
-
-         insertAnswer.call(answerData, function(error,result){
-             if(result){
-                 questionData.answers[0].answer = result;
-                 insertQuestion.call(questionData);
-             }
-         });
-
-     },
      "submit .add-answer": function(event, template){
          event.preventDefault();
          const answerData = { answer: event.target.answer.value };

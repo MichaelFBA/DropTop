@@ -7,7 +7,7 @@
                 {{#each answers}}
                     <span class="tag tag-info">{{getAnswer answer}}</span>
                 {{/each}}
-                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addAnswer">Add Answer</button>
+                <button type="button" class="btn btn-primary btn-sm set-question-id" data-id="{{_id}}" data-toggle="modal" data-target="#addAnswer">Add Answer</button>
             </td>
             <td>{{#each answers}}
                     <span class="tag tag-primary">{{getTagName tag}}</span><br/>

@@ -81,6 +81,12 @@
     <div class="modal fade black" id="addAnswer" tabindex="-1" role="dialog" aria-labelledby="addQuestionLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
+                <div class="modal-header {{#if isAddingSubQuestion}}{{else}}hide{{/if}}">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">Adding Sub Question to "{{getQuestion isAddingSubQuestion}}"</h4>
+                </div>
                 <form class="add-answer">
                     <div class="modal-body">
 
