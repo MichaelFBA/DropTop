@@ -10,6 +10,8 @@
 .overflow-sideways{
     overflow-y: scroll;
     display: flex;
+    flex-direction: row-reverse;
+    
     .tag{
         display: flex;
         margin-right: 10px;

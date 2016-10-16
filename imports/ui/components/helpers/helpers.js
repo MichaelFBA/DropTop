@@ -31,3 +31,11 @@ Template.registerHelper( 'getSpecificationsName', (id) => {
         return spec.value;
     }
 });
+
+Template.registerHelper( 'capitalize', (words) => {
+    return words ? words.charAt(0).toUpperCase() + words.slice(1) : '';
+});
+
+Template.registerHelper( 'parseInt', (string) => {
+    return parseInt(string);
+});

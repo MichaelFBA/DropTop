@@ -1,0 +1,23 @@
+.custom-select {
+    display: inline;
+    max-width: 100%;
+    padding: 0em 1em 0.1em 0em;
+    color: #fff;
+    vertical-align: middle;
+    background: #222 url("data:image/svg+xml;charset=utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'><path fill='#fff' d='M2 0L0 2h4zm0 5L0 3h4z'/></svg>") no-repeat right 0.75rem center;
+    background-image: none \9;
+    background-size: 8px 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 1);
+    -moz-appearance: none;
+    -webkit-appearance: none;
+
+    &:focus {
+        border: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 1);
+        border-color: #fff;
+    }
+
+    option{
+        font-family: inherit;
+    }
+}
