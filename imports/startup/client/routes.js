@@ -23,6 +23,7 @@ import '../../ui/components/inventory/inventory.js';
 import '../../ui/components/questions/questions.js';
 import '../../ui/components/questions/subQuestions.js';
 import '../../ui/components/profileTags/profileTags.js';
+import '../../ui/components/survey/survey.js';
 
 BlazeLayout.setRoot('body');
 

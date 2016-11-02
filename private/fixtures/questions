@@ -1,0 +1,30 @@
+{
+    "computers": [{
+        "title": "Attain customer profile",
+        "questions": [
+            {
+                "type": "select",
+                "title": "Will you use your computer for gaming?",
+                "choices": ["Yes", "No"],
+                "tags": ["gaming", null],
+                "isRequired": true,
+                    "subQuestions": [
+                        {
+                            "type": "checkbox",
+                            "title": "What type of games are you intersted in?",
+                            "choices": ["VR", "Latest games"],
+                            "tags": ["vr", "latest-games"],
+                            "isRequired": false,
+                        }
+                    ]
+            },
+            {
+                "type": "select",
+                "title": "Are you interested in productivity applications?",
+                "choices": ["Yes", "No"],
+                "tags": ["productivity", null],
+                "isRequired": true,
+            }
+        ]
+    }]
+}
