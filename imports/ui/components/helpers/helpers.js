@@ -39,3 +39,7 @@ Template.registerHelper( 'capitalize', (words) => {
 Template.registerHelper( 'parseInt', (string) => {
     return parseInt(string);
 });
+
+Template.registerHelper('arrayIndexPlusOne', (value) => {
+    return value + 1;
+});

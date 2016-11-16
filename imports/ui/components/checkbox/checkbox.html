@@ -1,0 +1,11 @@
+<template name="checkbox">
+    {{#each this.answers}}
+    <div class="form-check">
+        <label class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" value="{{this.tag}}">
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">{{this.value}}</span>
+        </label>
+    </div>
+    {{/each}}
+</template>

@@ -1,0 +1,61 @@
+{
+    "_id": "c7gwfXGgBM2uvwSEz",
+    "title": "Attain customer profile",
+    "type": "computers",
+    "questions": [{
+        "type": "select",
+        "title": "Will you use your computer for gaming?",
+        "answers": [{
+            "tag": "gaming",
+            "value": "Yes"
+        }, {
+            "tag": null,
+            "value": "No"
+        }],
+        "questions": [{
+            "type": "checkbox",
+            "title": "What type of games are you intersted in?",
+            "answers": [{
+                "tag": "vr-gaming",
+                "value": "VR"
+            }, {
+                "tag": "casual-gaming",
+                "value": "Casual Gaming"
+            }, {
+                "tag": "mobile-gaming",
+                "value": "Mobile Gaming"
+            }]
+        }]
+    }, {
+        "type": "select",
+        "title": "Are you interested in productivity applications?",
+        "answers": [{
+            "tag": "productivity",
+            "value": "Yes"
+        }, {
+            "tag": null,
+            "value": "No"
+        }],
+        "questions": [{
+            "type": "select",
+            "title": "Would you require office applications?",
+            "answers": [{
+                "tag": "office",
+                "value": "Yes"
+            }, {
+                "tag": null,
+                "value": "No"
+            }]
+        }, {
+            "type": "select",
+            "title": "Are you interested in using open source software?",
+            "answers": [{
+                "tag": "open-source",
+                "value": "Yes"
+            }, {
+                "tag": null,
+                "value": "No"
+            }]
+        }]
+    }]
+}

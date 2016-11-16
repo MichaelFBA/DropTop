@@ -4,7 +4,7 @@
             <h6 class="theme-color m-b-1">Current profile</h6>
             <section class="overflow-sideways">
                 {{#each profileTags}}
-                <span class="tag tag-default theme-border-color-thick theme-color transition">{{capitalize (getTagName this)}}
+                <span class="tag tag-default theme-border-color-thick theme-color transition">{{capitalize (this)}}
                     <button type="button" data-id="{{this}}" class="close" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>

@@ -21,9 +21,9 @@ import '../../ui/components/tags/tags.js';
 import '../../ui/components/specifications/specifications.js';
 import '../../ui/components/inventory/inventory.js';
 import '../../ui/components/questions/questions.js';
-import '../../ui/components/questions/subQuestions.js';
 import '../../ui/components/profileTags/profileTags.js';
-import '../../ui/components/survey/survey.js';
+import '../../ui/components/select/select.js';
+import '../../ui/components/checkbox/checkbox.js';
 
 BlazeLayout.setRoot('body');
 
@@ -46,7 +46,7 @@ FlowRouter.route('/questionnaire/new', {
 	}
 });
 
-FlowRouter.route('/questionnaire/:questionId', {
+FlowRouter.route('/questionnaire/:id', {
 	action: function(params, queryParams) {
 		BlazeLayout.render('main', {
             content: "questionnaire",
