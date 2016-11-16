@@ -10,6 +10,7 @@ import '/imports/api/inventory/inventory.js';
 import '/imports/api/questions/questions.js';
 import '/imports/api/answers/answers.js';
 import '/imports/api/survey/survey.js';
+import '/imports/api/stripe/stripe.js';
 
 // code to run on server at startup
 Meteor.startup(() => {

@@ -1,6 +1,3 @@
-import { Mongo } from 'meteor/mongo';
-import {StripeAPI} from 'stripe';
-
 //Publications
 if (Meteor.isServer) {
 	let Stripe = StripeAPI( Meteor.settings.private.stripe );

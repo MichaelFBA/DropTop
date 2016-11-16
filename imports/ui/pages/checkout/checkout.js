@@ -27,7 +27,7 @@ Template.checkout.onCreated(() => {
                     template.processing.set( false );
                     console.error( error.reason, 'danger' );
                 } else {
-                    console.error( 'Thanks! You\'ll be ghost free soon :)', 'success' );
+                    console.log( 'Thanks! You\'ll be ghost free soon :)', 'success' );
                 }
             });
         },
