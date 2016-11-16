@@ -14,6 +14,7 @@ import '../../ui/pages/admin/admin.js';
 import '../../ui/pages/questionnaire/questionnaire.js';
 import '../../ui/pages/newQuestionnaire/newQuestionnaire.js';
 import '../../ui/pages/profile/profile.js';
+import '../../ui/pages/checkout/checkout.js';
 
 //Components
 import '../../ui/components/helpers/helpers.js';
@@ -59,6 +60,14 @@ FlowRouter.route('/profile', {
 	action: function(params, queryParams) {
 		BlazeLayout.render('main', {
             content: "profile",
+        });
+	}
+});
+
+FlowRouter.route('/checkout', {
+	action: function(params, queryParams) {
+		BlazeLayout.render('main', {
+            content: "checkout",
         });
 	}
 });
