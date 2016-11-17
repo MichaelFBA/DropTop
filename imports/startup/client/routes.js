@@ -27,6 +27,42 @@ import '../../ui/components/survey/survey.js';
 
 BlazeLayout.setRoot('body');
 
+
+//Admin routes
+var exposed = FlowRouter.group({
+    prefix: "/admin",
+    name: "admin"
+});
+
+
+//Login and Sign up groups
+exposed.route('/login',{
+ name: 'login',
+ action: function() {
+	BlazeLayout.render('componentLayout', {content: 'login'});
+	}
+});
+
+exposed.route('/signup', {
+ name: 'signup',
+ action: function() {
+	BlazeLayout.render('componentLayout', {content: 'signup'});
+	}
+});
+
+//Logged in Group
+loggedIn = FlowRouter.group({
+ triggersEnter: [ function(context, redirect) {
+   if (Meteor.userId()){
+     	  route = FlowRouter.current();
+	} else if (route.route.name == 'login'){
+       	  Session.set('redirectAfterLogin', route.path);
+	} else {
+	  FlowRouter.go('login');
+	}
+ }]
+});
+
 //Home
 FlowRouter.route('/', {
 	action: function(params, queryParams) {
@@ -72,7 +108,7 @@ function checkProfile(context) {
 }
 
 //Admin
-FlowRouter.route('/admin', {
+loggedIn.route('/admin', {
 	action: function(params, queryParams) {
         BlazeLayout.render('main', {
             header: "header",

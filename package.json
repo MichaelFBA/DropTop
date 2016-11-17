@@ -6,8 +6,8 @@
   },
   "dependencies": {
     "bcrypt": "^0.8.7",
-    "bootstrap": "^4.0.0-alpha.4",
+    "bootstrap": "https://registry.npmjs.org/bootstrap/-/bootstrap-4.0.0-alpha.4.tgz",
     "moment": "^2.14.1",
-    "sugar": "^2.0.1"
+    "sugar": "https://registry.npmjs.org/sugar/-/sugar-2.0.1.tgz"
   }
 }
