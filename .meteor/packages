@@ -27,3 +27,5 @@ aldeed:simple-schema
 aldeed:collection2
 mrgalaxy:stripe
 check
+accounts-ui
+accounts-password

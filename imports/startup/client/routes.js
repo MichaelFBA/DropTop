@@ -1,6 +1,12 @@
-import { FlowRouter } from 'meteor/kadira:flow-router';
-import { BlazeLayout } from 'meteor/kadira:blaze-layout';
-import { ProfileTags } from '/imports/ui/components/profileTags/profileTags.js';
+import {
+	FlowRouter
+} from 'meteor/kadira:flow-router';
+import {
+	BlazeLayout
+} from 'meteor/kadira:blaze-layout';
+import {
+	ProfileTags
+} from '/imports/ui/components/profileTags/profileTags.js';
 
 import 'bootstrap';
 
@@ -28,30 +34,70 @@ import '../../ui/components/checkbox/checkbox.js';
 
 BlazeLayout.setRoot('body');
 
+
+//Admin routes
+var exposed = FlowRouter.group({
+	prefix: "/admin",
+	name: "admin"
+});
+
+
+//Login and Sign up groups
+exposed.route('/login', {
+	name: 'login',
+	action: function() {
+		BlazeLayout.render('auth', {
+			content: 'login'
+		});
+	}
+});
+
+exposed.route('/signup', {
+	name: 'signup',
+	action: function() {
+		BlazeLayout.render('auth', {
+			content: 'signup'
+		});
+	}
+});
+
+//Logged in Group
+loggedIn = FlowRouter.group({
+	triggersEnter: [function(context, redirect) {
+		const route = FlowRouter.current();
+		if (Meteor.userId()) {
+		} else if (route.route.name == 'login') {
+			Session.set('redirectAfterLogin', route.path);
+		} else {
+			FlowRouter.go('login');
+		}
+	}]
+});
+
 //Home
 FlowRouter.route('/', {
 	action: function(params, queryParams) {
 		BlazeLayout.render('main', {
-            header: "header",
-            content: "home",
-            footer: "footer",
-        });
+			header: "header",
+			content: "home",
+			footer: "footer",
+		});
 	}
 });
 
 FlowRouter.route('/questionnaire/new', {
 	action: function(params, queryParams) {
 		BlazeLayout.render('main', {
-            content: "newQuestionnaire",
-        });
+			content: "newQuestionnaire",
+		});
 	}
 });
 
 FlowRouter.route('/questionnaire/:id', {
 	action: function(params, queryParams) {
 		BlazeLayout.render('main', {
-            content: "questionnaire",
-        });
+			content: "questionnaire",
+		});
 	}
 });
 
@@ -59,35 +105,35 @@ FlowRouter.route('/profile', {
 	triggersEnter: [checkProfile],
 	action: function(params, queryParams) {
 		BlazeLayout.render('main', {
-            content: "profile",
-        });
+			content: "profile",
+		});
 	}
 });
 
 FlowRouter.route('/checkout', {
 	action: function(params, queryParams) {
 		BlazeLayout.render('main', {
-            content: "checkout",
-        });
+			content: "checkout",
+		});
 	}
 });
 
 function checkProfile(context) {
-  	// context is the output of `FlowRouter.current()`
+	// context is the output of `FlowRouter.current()`
 	const tags = ProfileTags.get();
-	if(tags.length === 0){
+	if (tags.length === 0) {
 		BlazeLayout.render('notFound');
 	}
 }
 
 //Admin
-FlowRouter.route('/admin', {
+loggedIn.route('/admin', {
 	action: function(params, queryParams) {
-        BlazeLayout.render('main', {
-            header: "header",
-            content: "admin",
-            footer: "footer",
-        });
+		BlazeLayout.render('main', {
+			header: "header",
+			content: "admin",
+			footer: "footer",
+		});
 	}
 });
 

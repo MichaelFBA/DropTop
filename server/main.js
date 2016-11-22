@@ -1,8 +1,9 @@
 import { Meteor } from 'meteor/meteor';
+import { Stripe } from 'stripe';
 import Sugar from 'sugar';
 import { updateSpec } from '/imports/api/specifications/specifications.js';
 import { updateAnswer } from '/imports/api/answers/answers.js';
-
+console.log(Stripe.setPublishableKey )
 //Api
 import '/imports/api/tags/tags.js';
 import '/imports/api/specifications/specifications.js';
@@ -37,4 +38,8 @@ Meteor.startup(() => {
     Meteor.call('updateSurvey', SurveyFixture, function (error, result) {
         if(error) console.error(error);
     });
+
+    //Setup stripe
+    var stripeKey = Meteor.settings.public.stripe.testPublishableKey;
+    // Stripe.setPublishableKey( stripeKey );
 });
