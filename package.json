@@ -1,14 +1,23 @@
 {
   "name": "droptop",
-  "private": true,
+  "version": "1.0.0",
+  "description": "PWA and Nodejs backend",
+  "main": "index.js",
   "scripts": {
-    "start": "meteor run"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MichaelFBA/droptop.git"
+  },
+  "author": "Michael Bell",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MichaelFBA/droptop/issues"
+  },
+  "homepage": "https://github.com/MichaelFBA/droptop#readme",
   "dependencies": {
-    "bcrypt": "^0.8.7",
-    "bootstrap": "https://registry.npmjs.org/bootstrap/-/bootstrap-4.0.0-alpha.4.tgz",
-    "moment": "^2.14.1",
-    "stripe": "^4.12.0",
-    "sugar": "https://registry.npmjs.org/sugar/-/sugar-2.0.1.tgz"
+    "google-auth-library": "~0.10.0",
+    "googleapis": "~16.0.0"
   }
 }
