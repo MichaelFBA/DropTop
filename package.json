@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/MichaelFBA/droptop#readme",
   "dependencies": {
+    "cradle": "~0.7.1",
     "google-auth-library": "~0.10.0",
     "googleapis": "~16.0.0"
   }
